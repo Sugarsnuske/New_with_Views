@@ -47,6 +47,7 @@ namespace New_with_Views
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+                services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddMvc();
 
             // Add application services.
@@ -70,7 +71,7 @@ namespace New_with_Views
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            loggerFactory.AddConsole();
             app.UseStaticFiles();
 
             app.UseIdentity();
