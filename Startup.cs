@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApplication.Data;
-using WebApplication.Models;
-using WebApplication.Services;
+using New_with_Views.Data;
+using New_with_Views.Models;
+using New_with_Views.Services;
 
-namespace WebApplication
+namespace New_with_Views
 {
     public class Startup
     {

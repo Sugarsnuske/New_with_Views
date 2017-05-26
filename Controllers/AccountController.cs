@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using WebApplication.Models;
-using WebApplication.Models.AccountViewModels;
-using WebApplication.Services;
+using New_with_Views.Models;
+using New_with_Views.Models.AccountViewModels;
+using New_with_Views.Services;
 
-namespace WebApplication.Controllers
+namespace New_with_Views.Controllers
 {
     [Authorize]
     public class AccountController : Controller
