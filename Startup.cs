@@ -1,84 +1,39 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using New_with_Views.Models;
+using New_with_Views.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using New_with_Views.Data;
-using New_with_Views.Models;
-using New_with_Views.Services;
-using New_with_Views.Models.Repositories;
 
 namespace New_with_Views
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+
+        public void ConfigureServices(IServiceCollection servises)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
-
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
-
-        public IConfigurationRoot Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
             
-            services.AddMvc();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddScoped<IMovieRepository, MovieRepository>();
+            servises.AddDbContext<MyDbContext>();
+            // 4. Now delete your database, and your migrations
+            // do a:
+            //       dotnet ef migrations add first
+            //       dotnet ef database update
+            //       dotnet run
+            servises.AddMvc();
+            servises.AddScoped<IMovieRepository, MovieRepository>();
+            
+           
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            loggerFactory.AddConsole();
-            app.UseStaticFiles();
-
-            app.UseIdentity();
-
-            // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
-            app.UseMvcWithDefaultRoute();   }
+       public void Configure(IApplicationBuilder app, ILoggerFactory logger, MyDbContext context) // 1. add a context parameter
+       {
+           app.UseStaticFiles();
+            // Log to the Console
+            logger.AddConsole();
+            app.UseMvcWithDefaultRoute();
+            DbInitializer.Initialize(context);  // 2. add this and run the program
+                                                // You will get a runtime error:
+                                                // No service for type 'ConsoleApplication.Models.MyDbContext' has been registered.
+                                                // 
+       }
     }
 }

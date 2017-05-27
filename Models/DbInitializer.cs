@@ -18,7 +18,7 @@ namespace New_with_Views.Models
 
             var movies = new Movie[]
             {
-                new Movie{MovieItemID = 1, MovieTitle = "First task", YearPublished = 1999, Genre ="Horror",
+                new Movie{MovieItemID = 1, MovieTitle = "First Movie", YearPublished = 1999, Genre ="Horror",
                     Director ="The Stupid Idiot", MovieLength = "1 hour 00 minutes", MoviePlot ="some looooooooong text", Rating = 5 },
                 new Movie{MovieItemID = 3, MovieTitle = "Second task", YearPublished = 2017, Genre ="Fiction",
                     Director ="The Other Stupid Idiot", MovieLength = "1 hour 55 minutes", MoviePlot ="some looooooooong text", Rating = 1 },
