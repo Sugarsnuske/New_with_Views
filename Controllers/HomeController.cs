@@ -22,11 +22,5 @@ namespace New_with_Views.Controllers
             return View();
         }
 
-
-        public IActionResult About()
-        {
-            return View();
-        }
-
     }
 }
