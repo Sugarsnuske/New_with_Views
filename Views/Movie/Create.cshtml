@@ -1,0 +1,10 @@
+@model New_with_Views.Models.Entities.Movie
+<!-- Shared View hentes -->
+    @{
+        ViewBag.Title = "Create New Movie";
+        ViewBag.btnText = "Create Movie";
+    }    
+
+    <form asp-controler="Movient" asp-action="Create" method="POST" class="form-horizontal" >
+        @Html.Partial("_MoviesForm")
+    </form>

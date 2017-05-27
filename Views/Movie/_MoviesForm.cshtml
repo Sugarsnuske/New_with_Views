@@ -1,0 +1,56 @@
+@model New_with_Views.Models.Entities.Movie
+
+<div class="form-group">          
+    <label asp-for="MovieTitle" class="col-md-2 control-label"></label>
+        <div class="col-md-4">
+        <input class="form-control "  asp-for="MovieTitle">
+            </div>
+        </div>
+        
+          <div class="form-group">       
+                <label asp-for="YearPublished" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="YearPublished" >
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="Genre" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="Genre" >
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="Director" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="Director">
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="MovieLength" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="MovieLength">
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="MoviePlot" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="MoviePlot">
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="Rating" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="Rating">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+            <button type="submit" class="btn btn-success">@ViewBag.BtnText</button>
+            <a class="btn btn-info" asp-controller="Student" asp-action="Index">Back to List</a>
+        </div>

@@ -1,0 +1,14 @@
+@model New_with_Views.Models.Entities.Movie
+
+@{
+    ViewBag.Title = "Update Movie - "+ @Model.MovieTitle;
+    ViewBag.btnText = "Update";
+}
+
+<form asp-controler="Movie" asp-action="Update" method="POST" class="form-horizontal" >
+    <input class="form-control" type="Hidden" asp-for="MovieItemID">
+    
+    @Html.Partial("_MoviesForm")
+    
+    
+</form>

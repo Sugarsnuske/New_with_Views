@@ -1,0 +1,62 @@
+@model New_with_Views.Models.Entities.Movie
+
+<!-- Shared View hentes -->
+    @{
+        ViewBag.Title = "Delete Movie";
+        ViewBag.Phrase = "Are you sure you want to delete this Movie?";
+
+    }
+
+    <form asp-controler="Movie" asp-action="Delete" method="POST" class="form-horizontal">
+        <input class="form-control" type="hidden" asp-for="MovieItemID">
+        <div class="form-group">
+            <label asp-for="MovieTitle" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.MovieTitle</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="YearPublished" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.YearPublished</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Genre" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.Genre</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Director" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.Director</p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="MovieLength" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.MovieLength</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MoviePlot" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.MoviePlot</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Rating" class="col-sm-2 control-label"></label>
+            <div class="col-sn-10">
+                <p class="form-control-static">@Model.Rating</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a class="btn btn-info" asp-controller="Movie" asp-action="Index">Back to List</a>
+            </div>
+    </form>
