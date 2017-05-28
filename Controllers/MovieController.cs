@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using New_with_Views.Models.Entities;
 using New_with_Views.Models.ViewModels;
 
-namespace ConsoleApplication.Controllers
+namespace New_with_Views.Controllers
 {
     public class MovieController : Controller
     {
@@ -20,10 +20,19 @@ namespace ConsoleApplication.Controllers
 
         // Read
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(/*string id*/)
         {
             IEnumerable<Movie> movies = _movieRepository.GetAll();
             return View(movies);
+            /*var movies = from m in _movieRepository.GetAll()
+                 select m;
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                movies = movies.Where(s => s.MovieTitle.Contains(id));
+            }
+
+            return View(movies);*/
         }
 
         // Create

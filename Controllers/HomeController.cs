@@ -15,9 +15,7 @@ namespace New_with_Views.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            
             List<Movie> movies = db.Movies.ToList();
-
             ViewBag.Y = movies;
             return View();
         }
