@@ -48,10 +48,6 @@ namespace New_with_Views.Controllers
             if (ModelState.IsValid)
             {
                 _movieRepository.Save(mo);
-
-                // Moved to the repo
-                // db.Students.Add(st);
-                // db.SaveChanges();
                 return RedirectToAction("Index");
 
             }
@@ -64,7 +60,6 @@ namespace New_with_Views.Controllers
         // Update
         public IActionResult Update(int id)
         {
-            //Student student = db.Students.Find(id);
             Movie movie =  _movieRepository.Get(id);
             return View(movie);
         }
@@ -74,8 +69,6 @@ namespace New_with_Views.Controllers
             if (ModelState.IsValid)
             {
                 _movieRepository.Update(movie);
-                //db.Students.Update(student);
-                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(movie);
@@ -85,7 +78,6 @@ namespace New_with_Views.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            //Student student = db.Students.Find(id);
             Movie movie =  _movieRepository.Get(id);
             return View(movie);
         }
