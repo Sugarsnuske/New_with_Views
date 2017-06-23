@@ -1,0 +1,19 @@
+@model New_with_Views.Models.Entities.Movie
+
+@{ 
+    ViewBag.Title = "Details for: "; 
+    ViewBag.Phrase = @Model.MovieTitle;
+    
+}
+
+    <form asp-controler="Movie" asp-action="Create" method="POST" class="form-horizontal" >
+        @Html.Partial("_MoviesDetails")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <a class="btn btn-primary" asp-controller="Movie" asp-action="Update" asp-route-id=@Model.MovieItemID >Edit</a>
+                <a class="btn btn-danger" asp-controller="Movie" asp-action="Delete" asp-route-id=@Model.MovieItemID>Delete</a> 
+                <a class="btn btn-info" asp-controller="Movie" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </form>
+    

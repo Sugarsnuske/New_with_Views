@@ -1,0 +1,33 @@
+@model New_with_Views.Models.ViewModels.MovieActorViewModel 
+
+@{ 
+    ViewBag.Title = "Add Actor to Movie:";
+    ViewBag.Phrase = @Model.Movie.MovieTitle;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h1>Add to Actor to Movie</h1>
+        <p>@Model.Movie.MovieItemID @Model.Movie.MovieTitle</p>
+    </div>
+</div>
+<form asp-controler="Movie" asp-action="Actor" method="POST" class="form-horizontal" >
+    <input type="Hidden" name="MovieItemID" value="@Model.Movie.MovieItemID">
+    <div class="row">
+        <div class="col-md-2">
+             <select id="@Model.Actors" name="ActorID">
+
+                @foreach(var a in Model.Actors)
+                {
+                    <option value="@a.ActorID">@a.FirstName @a.LastName</option>
+                }              
+            </select>
+        </div> 
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-success">Add</button>
+            <a class="btn btn-primary" asp-controller="Movie" asp-action="Index">Finish</a>
+            <a class="btn btn-info" asp-controller="Movie" asp-action="Index">Back to List</a>
+        </div>
+    </div>
+  </form>   
+           

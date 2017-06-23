@@ -1,0 +1,11 @@
+@model New_with_Views.Models.Entities.Actor
+
+    @{
+        ViewBag.Title = "Create New Actor";
+        ViewBag.Phrase = "Fill out the form";
+        ViewBag.BtnText = "Create";
+    }    
+
+    <form asp-controler="Actor" asp-action="Create" method="POST" class="form-horizontal" >
+        @Html.Partial("_ActorForm")
+    </form>

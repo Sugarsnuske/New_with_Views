@@ -1,0 +1,28 @@
+@model New_with_Views.Models.Entities.Actor
+
+<div class="form-group">          
+    <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-4">
+        <input class="form-control"  asp-for="FirstName">
+            </div>
+        </div>
+        
+          <div class="form-group">       
+                <label asp-for="LastName" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input class="form-control " asp-for="LastName" >
+            </div>
+        </div>
+
+        <div class="form-group">       
+                <label asp-for="Birthday" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                <input type="date" class="form-control" asp-for="Birthday" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+            <button type="submit" class="btn btn-success">@ViewBag.BtnText</button>
+            <a class="btn btn-info" asp-controller="Actor" asp-action="Index">Back to List</a>
+        </div>

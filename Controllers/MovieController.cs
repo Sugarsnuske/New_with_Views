@@ -5,6 +5,7 @@ using New_with_Views.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using New_with_Views.Models.Entities;
 using New_with_Views.Models.ViewModels;
+using System;
 
 namespace New_with_Views.Controllers
 {
@@ -12,27 +13,32 @@ namespace New_with_Views.Controllers
     {
         // Loosly Coupled
         private IMovieRepository _movieRepository;
+        private IActorRepository _actorRepository;
 
-        public MovieController(IMovieRepository movieRepository)
+        public MovieController(IMovieRepository movieRepository, IActorRepository actorRepository)
         {
-            this._movieRepository = movieRepository;   
+            this._movieRepository = movieRepository;
+            this._actorRepository = actorRepository;
+            
         }
 
         // Read
         [HttpGet]
-        public IActionResult Index(/*string id*/)
+        public IActionResult Index(string searchString)
         {
-            IEnumerable<Movie> movies = _movieRepository.GetAll();
-            return View(movies);
-            /*var movies = from m in _movieRepository.GetAll()
+            /*IEnumerable<Movie> movies = _movieRepository.GetAll();
+            return View(movies);*/
+            
+            var movies = from m in _movieRepository.GetAll() 
                  select m;
 
-            if (!string.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(s => s.MovieTitle.Contains(id));
+                movies = movies.Where(m => m.MovieTitle.Contains(searchString));
             }
 
-            return View(movies);*/
+            return View(movies);
+
         }
 
         // Create
@@ -94,6 +100,17 @@ namespace New_with_Views.Controllers
             var movie = _movieRepository.Get(id);
             return View(movie);
         }
+
+        public IActionResult InMovie(int id){
+            MovieActorViewModel mavm = new MovieActorViewModel();
+            mavm.Movie = _movieRepository.Get(id);
+            mavm.Actors = _actorRepository.GetAll();
+
+            return View(mavm);
+        }
+        /*public IActionResult Search(string searchString)
+        {
+        }*/
 
     }
 }

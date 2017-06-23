@@ -1,0 +1,14 @@
+@model New_with_Views.Models.Entities.Actor
+
+@{
+    ViewBag.Title = "Update Actor - "+ @Model.FirstName + " " + @Model.LastName;
+    ViewBag.btnText = "Update";
+}
+
+<form asp-controler="Actor" asp-action="Update" method="POST" class="form-horizontal" >
+    <input class="form-control" type="Hidden" asp-for="ActorID">
+    
+    @Html.Partial("_ActorForm")
+    
+    
+</form>

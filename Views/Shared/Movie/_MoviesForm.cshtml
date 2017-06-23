@@ -3,7 +3,7 @@
 <div class="form-group">          
     <label asp-for="MovieTitle" class="col-md-2 control-label"></label>
         <div class="col-md-4">
-        <input class="form-control "  asp-for="MovieTitle">
+        <input class="form-control"  asp-for="MovieTitle">
             </div>
         </div>
         
@@ -31,7 +31,7 @@
         <div class="form-group">       
                 <label asp-for="MovieLength" class="col-md-2 control-label"></label>
                 <div class="col-md-4">
-                <input class="form-control " asp-for="MovieLength">
+                <input class="form-control " asp-for="MovieLength" type="time">
             </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="form-group">       
                 <label asp-for="Rating" class="col-md-2 control-label"></label>
                 <div class="col-md-4">
-                <input class="form-control " asp-for="Rating">
+                <input class="form-control " asp-for="Rating" type="number" min="1" max="5">
             </div>
         </div>
 

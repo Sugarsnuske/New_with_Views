@@ -1,4 +1,5 @@
 @model New_with_Views.Models.Entities.Movie
+
         <input class="form-control" type="hidden" asp-for="MovieItemID">
         <div class="form-group">
             <label asp-for="MovieTitle" class="col-sm-2 control-label"></label>
@@ -44,3 +45,18 @@
                 <p class="form-control-static">@Model.Rating</p>
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Actors</label>
+            <div class="col-sn-10">
+        
+                @foreach(var ac in Model.InMoviess)
+                {
+                    <p class="form-control-static"> @ac.Actor.FirstName @ac.Actor.LastName</p>
+                }
+            </div>
+            
+
+        </div>
+        
+    

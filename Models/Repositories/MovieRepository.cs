@@ -28,7 +28,9 @@ namespace New_with_Views.Models.Repositories
 
         public Movie Get(int id)
         {
-            Movie movie =  _db.Movies.Find(id);
+            //Movie movie =  _db.Movies.Find(id);
+            //return movie;
+            Movie movie =  _db.Movies.Include(s => s.InMoviess).ThenInclude(e => e.Actor).Where(r => r.MovieItemID == id).FirstOrDefault();
             return movie;
         }
 

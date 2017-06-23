@@ -19,6 +19,10 @@ namespace New_with_Views.Controllers
             ViewBag.Y = movies;
             return View();
         }
-
+        [HttpGet] 
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }

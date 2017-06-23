@@ -9,17 +9,18 @@ namespace New_with_Views
     public class Startup
     {
 
-        public void ConfigureServices(IServiceCollection servises)
+        public void ConfigureServices(IServiceCollection services)
         {
-            servises.AddDbContext<MyDbContext>();
-            servises.AddMvc();
-            servises.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddDbContext<MyDbContext>();
+            services.AddMvc();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IActorRepository, ActorRepository>();
+            services.AddScoped<IInMoviesRepository, InMoviesRepository>();
         }
 
-       public void Configure(IApplicationBuilder app, ILoggerFactory logger, MyDbContext context) // 1. add a context parameter
+       public void Configure(IApplicationBuilder app, ILoggerFactory logger, MyDbContext context)
        {
             app.UseStaticFiles();
-            // Log to the Console
             logger.AddConsole();
             app.UseMvcWithDefaultRoute();
             DbInitializer.Initialize(context);

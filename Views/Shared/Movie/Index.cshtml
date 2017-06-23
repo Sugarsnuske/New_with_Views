@@ -1,25 +1,34 @@
 @model IEnumerable<New_with_Views.Models.Entities.Movie>
-    <!-- Shared View hentes -->
+    <!-- Shared View automaticly implemented -->
     @{
         ViewBag.Title = "Movies";
+        ViewBag.Phrase = "Feel free to browse around";
     }
 
-    <a class="btn btn-success" asp-controller="Movie" asp-action="Create">New Movie</a>   
+    <!-- Implemented style in div for btn -->
+    <div style="height: 30px; margin: 10px 10px 20px 0px;">
+        <a class="btn btn-success" asp-controller="Movie" asp-action="Create">New Movie</a>   
+    </div>
     <table class="table  table-striped table-hover"> 
+        <!-- Table head DisplayName fetched from Entities.Movie-->
         <thead class="row">
-            <th>@Html.DisplayNameFor(model => model.MovieItemID)</th>
             <th>@Html.DisplayNameFor(model => model.MovieTitle)</th>
+            <th>@Html.DisplayNameFor(model => model.Director)</th>
             <th>@Html.DisplayNameFor(model => model.YearPublished)</th>
+            <th>@Html.DisplayNameFor(model => model.Rating)</th>
             <th ><span class="col-xs-offset-1">Action<span></th>
            
         </thead>
      @foreach(var mo in Model)
-        {           
+        {        
+            <!-- Movie info fetched from GetAll Entities.Movie -->   
             <tr> 
-                <td>@mo.MovieItemID</td>
                 <td>@mo.MovieTitle</td>
+                <td>@mo.Director</td>
                 <td>@mo.YearPublished</td>
+                <td>@mo.Rating</td>
                 <td class="row">
+                    <!-- asp-route-id fetched from GetAll Entities.Movie - MovieItemID -->
                     <a class="btn btn-primary btn-sm col-xs-3 col-xs-offset-1" asp-controller="Movie" asp-action="Update" asp-route-id=@mo.MovieItemID >Edit</a>
                     <a class="btn btn-danger btn-sm col-xs-3 col-xs-offset-1" asp-controller="Movie" asp-action="Delete" asp-route-id=@mo.MovieItemID>Delete</a> 
                     <a class="btn btn-info btn-sm col-xs-3 col-xs-offset-1" asp-controller="Movie" asp-action="Details" asp-route-id=@mo.MovieItemID>Details</a>

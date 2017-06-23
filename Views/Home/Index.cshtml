@@ -1,11 +1,14 @@
 
    @{
         ViewBag.Title = "Movies at Home";
+        ViewBag.Phrase = "Brought to you by MHansen";
     }
 
-    <p> @foreach(var st in ViewBag.Y)
+    <p> @foreach(var mo in ViewBag.Y)
         {
-            <p>  @st.MovieTitle   </p>
+            <p>  @mo.MovieTitle   </p>
         }
+     </p>
+     
      </p>
   

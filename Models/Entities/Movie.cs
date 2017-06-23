@@ -8,7 +8,7 @@ namespace New_with_Views.Models.Entities
     {
         [Key]
         public int MovieItemID{get;set;}
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "MovieTitle is Required")]
         [Display(Name = "Movie Title")]
         public string MovieTitle{get;set;}
         [Display(Name = "Year Published")]
@@ -23,6 +23,9 @@ namespace New_with_Views.Models.Entities
         public string MoviePlot{get;set;}
         [Display(Name = "Movie Rating")]
         public int Rating{get;set;}
+        
+        // Navigation prop
+        public IEnumerable<InMovies> InMoviess { get; set; }
 
     }
 }

@@ -1,0 +1,18 @@
+@model New_with_Views.Models.Entities.Actor
+
+@{ 
+    ViewBag.Title = "Details for: "; 
+    ViewBag.Phrase = @Model.FirstName + " " + @Model.LastName;
+    
+}
+
+    <form asp-controler="Actor" asp-action="Create" method="POST" class="form-horizontal" >
+        @Html.Partial("_ActorDetails")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <a class="btn btn-primary" asp-controller="Actor" asp-action="Update" asp-route-id=@Model.ActorID >Edit</a>
+                <a class="btn btn-danger" asp-controller="Actor" asp-action="Delete" asp-route-id=@Model.ActorID>Delete</a> 
+                <a class="btn btn-info" asp-controller="Actor" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,10 @@
+body {
+    padding-top: 70px;
+}
+
+.container {}
+
+.jumbotron {
+    background-color: gray;
+    text-align: center;
+}
